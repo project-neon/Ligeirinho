@@ -1,6 +1,8 @@
 // Motores da Esquerda e da direita
-#define MOTOR_LEFT_PIN 16
-#define MOTOR_RIGHT_PIN 17
+#define MOTOR_RIGHT_IN1_PIN 21
+#define MOTOR_RIGHT_IN2_PIN 19
+#define MOTOR_LEFT_IN1_PIN 23
+#define MOTOR_LEFT_IN2_PIN 22
 
 // SCL, SDA para a comunicação I2C
 // Como usamos os pinos padrões da I2C, a biblioteca Wire.h cuida
