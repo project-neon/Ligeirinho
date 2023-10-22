@@ -53,7 +53,7 @@ void setup() {
   for (int i = 0; i < 4; i++) {
     pinMode(motorsInputPins[i], OUTPUT);   // Fazemos os pinos MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN e MOTOR_LEFT_IN2_PIN serem OUTPUTs
     ledcSetup(i, freq, resolution);        // Atribui a todos os canais i (= 0, 1, 2, 3) a frequencia de 50Hz com resolucao de 12bits.
-    ledcAttachPin(motorsInputPins[i], i);  //Associamos os pinos MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN e MOTOR_LEFT_IN2_PIN aos canais i (= 0, 1, 2, 3) respectivamente.
+    ledcAttachPin(motorsInputPins[i], i);  // Associamos os pinos MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN e MOTOR_LEFT_IN2_PIN aos canais i (= 0, 1, 2, 3) respectivamente.
   }
 
   // Vai pra frente
@@ -78,10 +78,10 @@ void setup() {
 }
 
 void loop() {
-  //No loop o robô fica indo para frente e para trás
+  // Vai para frente e para trás variando a velocidade
   if (abs(velMotorR) == 100) somaVel = -somaVel;
   velMotorR = velMotorL = velMotorR + somaVel;
   motorsOutput();
   motorsPrintVel();
-  delay(1000);
+  delay(500);
 }
