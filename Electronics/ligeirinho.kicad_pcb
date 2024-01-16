@@ -8887,6 +8887,14 @@
     )
 
     (stroke (width 0.1) (type solid)) (fill solid) (layer "F.SilkS") (tstamp 0ab75560-8b6d-41a3-9585-1ad59e19ef88))
+  (gr_poly
+    (pts
+      (xy 196.32 118.79)
+      (xy 198.32 118.79)
+      (xy 197.32 119.79)
+    )
+
+    (stroke (width 0.1) (type solid)) (fill solid) (layer "F.SilkS") (tstamp f9d9db94-072b-4bc6-aa40-28b6ac059256))
   (gr_rect (start 154.4 86) (end 230.5 141.1)
     (stroke (width 0.2) (type default)) (fill none) (layer "Edge.Cuts") (tstamp 7b36f7d0-b88a-43a0-88b8-4719c2876157))
   (gr_circle (center 158.63 113.25) (end 160.63 113.25)
@@ -8921,6 +8929,9 @@
   )
   (gr_text "-" (at 222.24 111.300625) (layer "B.SilkS") (tstamp df36d97e-c28a-4642-a73c-e55699004031)
     (effects (font (size 1 1) (thickness 0.125)) (justify left bottom mirror))
+  )
+  (gr_text "VIN" (at 196.04 118.65) (layer "F.SilkS") (tstamp 03420d44-528c-440a-9091-200decdfc710)
+    (effects (font (size 1 1) (thickness 0.1)) (justify left bottom))
   )
   (gr_text "X3 DA CL -  +" (at 190.97 94.28) (layer "F.SilkS") (tstamp 4d5fc795-1817-47ae-ae1d-9019b2c1cfc4)
     (effects (font (size 1 1) (thickness 0.125)) (justify left bottom))
