@@ -45,7 +45,6 @@
 #define REG_SROM_Load_Burst                      0x62
 #define REG_Pixel_Burst                          0x64
 
-int MousePinCSN = 5;
 int MHz = 1000000;
 
 // Firmware "adns9800_srom_A4.txt" from
