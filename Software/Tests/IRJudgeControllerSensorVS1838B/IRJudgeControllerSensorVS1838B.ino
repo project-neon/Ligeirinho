@@ -1,6 +1,6 @@
 #include <IRremote.hpp>  // Version 4.2.0
 
-#define JUDGE_CONTROLLER_PIN 4
+#define JUDGE_CONTROLLER_PIN 34
 
 void setup() {
   Serial.begin(115200);

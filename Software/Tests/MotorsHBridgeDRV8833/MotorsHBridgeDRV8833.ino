@@ -1,8 +1,8 @@
 // Pinos ligados a ponte H
-#define MOTOR_RIGHT_IN1_PIN 21
-#define MOTOR_RIGHT_IN2_PIN 19
-#define MOTOR_LEFT_IN1_PIN 22
-#define MOTOR_LEFT_IN2_PIN 23
+#define MOTOR_RIGHT_IN1_PIN 33
+#define MOTOR_RIGHT_IN2_PIN 32
+#define MOTOR_LEFT_IN1_PIN 26
+#define MOTOR_LEFT_IN2_PIN 25
 
 const int motorsInputPins[4] = { MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN, MOTOR_LEFT_IN2_PIN };  // Lista com os pinos de entrada dos motors
 

@@ -12,7 +12,7 @@
 
 // Define o pino XSHUT do sensor de distância VL53L0X
 // Quando LOW, esse pino desliga o sensor e permite o endereçamento dos outros
-int VL53LOX_XSHUT_LIST_PINS[3] = {23, 19, 18};
+int VL53LOX_XSHUT_LIST_PINS[3] = {17, 16, 4};
 
 // Pino que retorna o valor recebido pelo controle do Juiz
 #define JUDGE_CONTROLLER_PIN 4
