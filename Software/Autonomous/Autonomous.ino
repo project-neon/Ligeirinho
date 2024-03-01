@@ -11,7 +11,7 @@ void printDebugInfos() {
   printDistanceSensorsValues();
   printGyroscopeAngle();
   printMotorsSpeed();
-  printMouseXYRelative();
+  printMouseXYAbsolute();
   Serial.println("");
 }
 
@@ -51,9 +51,9 @@ void loop() {
   readDistanceSensorsValues();
   readGyroscopeAngles();
   readMouseXY();
+  updateRobotRadius();
 
   if (isRobotAllowedToMove) {
-    updateRobotRadius();
     if(distC < distAtk and (distL < distAtk or distR < distAtk)) {
       Serial.print("ATACANDO \t\t");
       preventFromFalling();

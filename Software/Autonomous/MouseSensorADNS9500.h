@@ -84,15 +84,17 @@ bool mouseUploadFirmware() {
 
 // Reads Motion
 void readMouseXY() {
-  dx = uint16_t(mouseRead(REG_Delta_X_L)) | uint16_t(mouseRead(REG_Delta_X_H) << 8);
-  dy = uint16_t(mouseRead(REG_Delta_Y_L)) | uint16_t(mouseRead(REG_Delta_Y_H) << 8);
+  dy = uint16_t(mouseRead(REG_Delta_X_L)) | uint16_t(mouseRead(REG_Delta_X_H) << 8);
+  dx = uint16_t(mouseRead(REG_Delta_Y_L)) | uint16_t(mouseRead(REG_Delta_Y_H) << 8);
+  dy = -dy;
+  dx = -dx;
 }
 
 // Update Robot Radius
 void updateRobotRadius() {
   int theta = absoluteAngle * 3.14159 / 180;
-  absoluteX = dx * cos(theta) - dy * sin(theta);
-  absoluteY = dx * sin(theta) + dy * cos(theta);
+  absoluteX = absoluteX + (dx * cos(theta) - dy * sin(theta));
+  absoluteY = absoluteY + (dx * sin(theta) + dy * cos(theta));
   radius = sqrt(pow(absoluteX, 2) + pow(absoluteY, 2));
   // if (radius >= maxRadius or radius <= minRadius) {
   //   inwardSpiralMovement = radius >= maxRadius;
