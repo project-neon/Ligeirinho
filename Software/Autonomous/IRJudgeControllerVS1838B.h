@@ -11,17 +11,16 @@ void checkSensorIR() {
     Serial.println(IrReceiver.decodedIRData.command, HEX);
 
     switch (IrReceiver.decodedIRData.command) {
-      case 0x1:
-      case 0x11:
+      case 0:
         Serial.println("Apertou o botão 1");
         break;
-      case 0x2:
-      case 0x12:
+      case 0x1:
+      case 0x11:
         Serial.println("Apertou o botão 2");
         isRobotAllowedToMove = true;
         break;
-      case 0x3:
-      case 0x13:
+      case 0x2:
+      case 0x12:
         Serial.println("Apertou o botão 3");
         if (isRobotAllowedToMove) {
           velMotorL = velMotorR = 0;
@@ -30,17 +29,17 @@ void checkSensorIR() {
           while(1);
         }
         break;
-      case 0x4:
-      case 0x14:
+      case 0x3:
+      case 0x13:
         Serial.println("Apertou o botão 4");
         isRobotAllowedToMove = false;
         break;
-      case 0x5:
-      case 0x15:
+      case 0x4:
+      case 0x14:
         Serial.println("Apertou o botão 5");
         break;
-      case 0x6:
-      case 0x16:
+      case 0x5:
+      case 0x15:
         Serial.println("Apertou o botão 6");
         break;
     }
