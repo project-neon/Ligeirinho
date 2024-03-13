@@ -6,6 +6,7 @@
 #include "IRJudgeControllerVS1838B.h"
 #include "MouseSensorADNS9500.h"
 
+int timer = millis();
 
 void printDebugInfos() {
   printDistanceSensorsValues();
@@ -36,10 +37,37 @@ void setup() {
 }
 
 void preventFromFalling() {
-  if(radius >= maxRadius) {
+  if (radius >= maxRadius) {
     velMotorL = velMotorR = -40;
     sendPWMToMotors();
     delay(200);
+  }
+}
+
+void simpleStrategy() {
+  if (distC < distAtk and (distL < distAtk or distR < distAtk)) {
+    Serial.print("ATACANDO \t\t");
+    preventFromFalling();
+    velMotorL = velMotorR = speedStandard;
+  } else if (distL < distAtk or distR < distAtk) {
+    (distL < distAtk) ? Serial.print("ESQ \t\t") : Serial.print("DIR \t\t");
+    preventFromFalling();
+    velMotorL = (distL < distAtk) ? speedStandard * 0.9 : speedStandard;
+    velMotorR = (distL < distAtk) ? speedStandard : speedStandard * 0.9;
+    enemyLastTimeSeenLeft = (distL < distAtk) ? true : false;
+  } else {
+    enemyLastTimeSeenLeft ? Serial.print("PROCURANDO ESQ \t\t") : Serial.print("PROCURANDO DIR \t\t");
+    velMotorL = enemyLastTimeSeenLeft ? -searchSpeed : searchSpeed;
+    velMotorR = enemyLastTimeSeenLeft ? searchSpeed : -searchSpeed;
+  }
+}
+
+void goBackAndForth() {
+  if (velMotorL == 0) velMotorL = velMotorR = -speedStandard;
+  if (radius >= maxRadius && millis()-timer > 500) {
+    timer = millis();
+    velMotorL = velMotorR = -velMotorL;
+    sendPWMToMotors();
   }
 }
 
@@ -54,27 +82,7 @@ void loop() {
   updateRobotRadius();
 
   if (isRobotAllowedToMove) {
-    if(distC < distAtk and (distL < distAtk or distR < distAtk)) {
-      Serial.print("ATACANDO \t\t");
-      preventFromFalling();
-      velMotorL = velMotorR = speedStandard;
-    } else if (distL < distAtk or distR < distAtk) {
-      (distL < distAtk) ? Serial.print("ESQ \t\t") : Serial.print("DIR \t\t");
-      preventFromFalling();
-      velMotorL = (distL < distAtk) ? speedStandard*0.9 : speedStandard;
-      velMotorR = (distL < distAtk) ? speedStandard : speedStandard*0.9;
-      enemyLastTimeSeenLeft = (distL < distAtk) ? true : false;
-    } else {
-      Serial.print("PROCURANDO \t\t");
-      if (inwardSpiralMovement) {
-        velMotorL = enemyLastTimeSeenLeft ? velMotorL-- : searchSpeed;
-        velMotorR = enemyLastTimeSeenLeft ? searchSpeed : velMotorR--;
-      } else {
-        velMotorL = enemyLastTimeSeenLeft ? velMotorL-- : searchSpeed;
-        velMotorR = enemyLastTimeSeenLeft ? searchSpeed : velMotorR--;
-      }
-      
-    }
+    goBackAndForth();
   } else {
     velMotorL = velMotorR = 0;
   }

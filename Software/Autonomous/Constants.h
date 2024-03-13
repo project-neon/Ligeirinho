@@ -1,7 +1,7 @@
 const int distAtk = 600;
 const int speedStandard = 100;
 const int searchSpeed = 50;
-const int maxRadius = 5000;
+const int maxRadius = 15500;
 const int minRadius = 1000;
 
 // Registers
