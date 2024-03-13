@@ -6,8 +6,6 @@ MPU6050 mpu6050(Wire);
 float absoluteAngle = 0;
 
 void GyroscopeMPU6050Init() {
-  Wire.begin();  // Inicia o I2C
-
   mpu6050.begin();                // Inicia o sensor pela lib
   mpu6050.calcGyroOffsets(true);  // Calcula o OffSet
 }

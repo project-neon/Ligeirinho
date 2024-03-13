@@ -18,6 +18,7 @@ int enemyLastTimeSeenLeft = false; // Define qual o último lado que vimos o ini
 void DistanceSensorVL53L0XInit() {
 
   Wire.begin();  // Inicia o I2C
+  Wire.setClock(400000); //TODO: iniciar o Wire em uma funcao separada no setup do codigo
 
   // Desliga todos os sensores
   for (int i = 0; i < 3; i++) {
