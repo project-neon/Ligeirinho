@@ -1,8 +1,10 @@
 const int distAtk = 600;
-const int speedStandard = 100;
+int speedStandard = 85;
 const int searchSpeed = 50;
-const int maxRadius = 15500;
-const int minRadius = 1000;
+// const int maxRadius = 15000;
+const int maxRadius = 14500;
+const int minRadius = maxRadius-500;
+bool canRevertVel = false;
 
 // Registers
 #define REG_Product_ID                           0x00

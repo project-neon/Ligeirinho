@@ -4,6 +4,7 @@ SPIClass vspi = SPIClass(VSPI);
 int16_t dx = 0;
 int16_t dy = 0;
 int absoluteX = 0;  // TODO: O valor n vai ser 0, corrigir isso
+int lastAbsoluteX = 0; // Usado para o controle PID
 int absoluteY = 0;
 int radius = 0;
 bool inwardSpiralMovement = false;
@@ -218,5 +219,11 @@ void printMouseXYRelative() {
   Serial.print(dx);
   Serial.print("   Y: ");
   Serial.print(dy);
+  Serial.print("\t");
+}
+
+void printMouseRadius() {
+  Serial.print("Radius: ");
+  Serial.print(radius);
   Serial.print("\t");
 }

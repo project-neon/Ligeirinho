@@ -1,18 +1,22 @@
-#include "Pinout.h"   // Arquivo com os valores dos pinos
+#include "Pinout.h"  // Arquivo com os valores dos pinos
 #include "Constants.h"
 #include "DistanceSensorVL53L0X.h"
 #include "GyroscopeMPU6050.h"
 #include "MotorsHBridgeDRV8833.h"
-#include "IRJudgeControllerVS1838B.h"
 #include "MouseSensorADNS9500.h"
+#include "PidController.h"
+#include "IRJudgeControllerVS1838B.h"
+
 
 int timer = millis();
 
 void printDebugInfos() {
-  printDistanceSensorsValues();
+  // printDistanceSensorsValues();
   printGyroscopeAngle();
   printMotorsSpeed();
-  printMouseXYAbsolute();
+  printMouseXYRelative();
+  printMouseRadius();
+  printPidOutput();
   Serial.println("");
 }
 
@@ -63,11 +67,10 @@ void simpleStrategy() {
 }
 
 void goBackAndForth() {
-  if (velMotorL == 0) velMotorL = velMotorR = -speedStandard;
-  if (radius >= maxRadius && millis()-timer > 500) {
-    timer = millis();
-    velMotorL = velMotorR = -velMotorL;
-    sendPWMToMotors();
+  if (radius <= minRadius) canRevertVel = true;
+  if (radius >= maxRadius && canRevertVel) {
+    speedStandard = -speedStandard;
+    canRevertVel = false;
   }
 }
 
@@ -80,13 +83,17 @@ void loop() {
   readGyroscopeAngles();
   readMouseXY();
   updateRobotRadius();
+  calculatePidError();
 
   if (isRobotAllowedToMove) {
     goBackAndForth();
+    velMotorL = constrain( -speedStandard + pidOutput, -100.0, 100.0);
+    velMotorR = constrain( -speedStandard - pidOutput, -100.0, 100.0);
+    sendPWMToMotors();
+
   } else {
-    velMotorL = velMotorR = 0;
+    velMotorL = velMotorR = -speedStandard;
   }
 
-  sendPWMToMotors();
   printDebugInfos();
 }

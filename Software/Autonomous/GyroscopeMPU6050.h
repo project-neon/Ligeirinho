@@ -13,7 +13,7 @@ void GyroscopeMPU6050Init() {
 void printGyroscopeAngle() {
   Serial.print("Angulo Z: ");
   Serial.print(absoluteAngle);
-  Serial.print("\t\t");
+  Serial.print("\t");
 }
 
 

@@ -17,6 +17,7 @@ void checkSensorIR() {
       case 0x1:
       case 0x11:
         Serial.println("Apertou o botão 2");
+        lastTime = millis(); // Para o controle PID
         isRobotAllowedToMove = true;
         break;
       case 0x2:

@@ -13,10 +13,10 @@ const int resolution = 12;                     // Resolução do PWM, 12 bits, d
 const int totalBits = pow(2, resolution) - 1;  // Magnitude máxima que o motor recebe e interpreta como 100% da velocidade
 
 // Variáveis responsáveis pela velocidade
-int velMotorR = 0;        // Vel direita, vai de [-100, 100]
-int velMotorL = 0;        // Vel esquerda, vai de [-100, 100]
-int velMotorRMapped = 0;  // Vel direita, vai de [-totalBits, totalBits]
-int velMotorLMapped = 0;  // Vel esquerda, vai de [-totalBits, totalBits]
+double velMotorR = 0;        // Vel direita, vai de [-100, 100]
+double velMotorL = 0;        // Vel esquerda, vai de [-100, 100]
+double velMotorRMapped = 0;  // Vel direita, vai de [-totalBits, totalBits]
+double velMotorLMapped = 0;  // Vel esquerda, vai de [-totalBits, totalBits]
 
 void MotorsHBridgeDRV8833Init() {
   for (int i = 0; i < 4; i++) {
