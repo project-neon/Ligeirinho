@@ -3,6 +3,7 @@
 SPIClass vspi = SPIClass(VSPI);
 int16_t dx = 0;
 int16_t dy = 0;
+int16_t listXDistanceValues[10] = {0}; //Usado na estratégia pra checar se o robô está sendo empurrado
 int absoluteX = 0;  // TODO: O valor n vai ser 0, corrigir isso
 int lastAbsoluteX = 0; // Usado para o controle PID
 int absoluteY = 0;

@@ -1,8 +1,9 @@
 const int distAtk = 600;
 int speedStandard = 85;
+const int maxSpeed = 100;
 const int searchSpeed = 50;
-// const int maxRadius = 15000;
-const int maxRadius = 14500;
+const int maxRadius = 1500;
+// const int maxRadius = 14500;//Dohyou
 const int minRadius = maxRadius-500;
 bool canRevertVel = false;
 

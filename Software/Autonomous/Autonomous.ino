@@ -11,7 +11,7 @@
 int timer = millis();
 
 void printDebugInfos() {
-  // printDistanceSensorsValues();
+  printDistanceSensorsValues();
   printGyroscopeAngle();
   printMotorsSpeed();
   printMouseXYRelative();
@@ -67,11 +67,32 @@ void simpleStrategy() {
 }
 
 void goBackAndForth() {
+  calculatePidAngleError();
   if (radius <= minRadius) canRevertVel = true;
   if (radius >= maxRadius && canRevertVel) {
     speedStandard = -speedStandard;
     canRevertVel = false;
   }
+  velMotorL = constrain(speedStandard + pidOutput, -100, 100);
+  velMotorR = constrain(speedStandard - pidOutput, -100, 100);
+}
+
+void notMoveYAxis() {
+  calculatePidYAxisError();
+  velMotorL = constrain(-pidOutput, -100, 100);
+  velMotorR = constrain(-pidOutput, -100, 100);
+}
+
+void checkIfBeingPushed() {
+  for (int i = 0; i < (9); i++) listXDistanceValues[i] = listXDistanceValues[i + 1];
+  listXDistanceValues[9] = dx;
+
+  int sum = 0;
+  for (int i = 0; i < 10; i++) sum += listXDistanceValues[i];
+  int meanValueXDistance = sum / 10;
+  // Serial.println(meanValueXDistance);
+  if (meanValueXDistance >= 400) velMotorL = velMotorR = -maxSpeed;
+  else if (distL < distAtk/3 || distC < distAtk/3 || distR < distAtk/3) velMotorL = velMotorR = maxSpeed;
 }
 
 void loop() {
@@ -83,17 +104,17 @@ void loop() {
   readGyroscopeAngles();
   readMouseXY();
   updateRobotRadius();
-  calculatePidError();
+  
 
   if (isRobotAllowedToMove) {
-    goBackAndForth();
-    velMotorL = constrain( -speedStandard + pidOutput, -100.0, 100.0);
-    velMotorR = constrain( -speedStandard - pidOutput, -100.0, 100.0);
-    sendPWMToMotors();
-
+    // simpleStrategy();
+    // goBackAndForth();
+    checkIfBeingPushed();
+    // notMoveYAxis();
   } else {
-    velMotorL = velMotorR = -speedStandard;
+    velMotorL = velMotorR = 0;
   }
 
+  sendPWMToMotors();
   printDebugInfos();
 }
