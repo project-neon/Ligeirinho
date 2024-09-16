@@ -4671,10 +4671,6 @@
 		(uuid "3bc2a5c3-ecd1-4494-a484-b309077c900a")
 	)
 	(no_connect
-		(at 130.81 144.78)
-		(uuid "4979c1e0-24d9-48c3-810a-9c9fb6747a1f")
-	)
-	(no_connect
 		(at 77.47 130.81)
 		(uuid "557ae45d-823a-4c38-901f-89bf12e6892c")
 	)
@@ -4703,10 +4699,6 @@
 		(uuid "9b4d542e-51ca-4ed4-9e85-29ff275685da")
 	)
 	(no_connect
-		(at 102.87 132.08)
-		(uuid "a5aea0bc-d664-4f92-9159-85d35c4f59db")
-	)
-	(no_connect
 		(at 149.86 77.47)
 		(uuid "ba0f242f-a0e4-4ec7-ba49-78c14a1a19db")
 	)
@@ -4733,10 +4725,6 @@
 	(no_connect
 		(at 153.67 77.47)
 		(uuid "d6c33c8d-f043-424e-a8d4-a83152aacbe4")
-	)
-	(no_connect
-		(at 130.81 129.54)
-		(uuid "d7c7c332-4fdb-420e-a370-39f64a081c81")
 	)
 	(no_connect
 		(at 113.03 40.64)
@@ -6720,7 +6708,7 @@
 			)
 		)
 	)
-	(global_label "I00"
+	(global_label "IO0"
 		(shape output)
 		(at 269.24 161.29 0)
 		(fields_autoplaced yes)
@@ -6732,7 +6720,7 @@
 		)
 		(uuid "321f63ed-6059-464c-a8e1-c98eded2a172")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 275.249 161.29 0)
+			(at 275.37 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8635,8 +8623,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 97.79 142.24 0)
-		(mirror y)
+		(at 97.79 144.78 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8644,7 +8631,7 @@
 		(dnp no)
 		(uuid "29c6df60-a53d-4d0d-818f-9581da684d27")
 		(property "Reference" "J9"
-			(at 95.25 142.2399 0)
+			(at 95.504 142.748 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8653,7 +8640,7 @@
 			)
 		)
 		(property "Value" "Motor B"
-			(at 95.25 144.7799 0)
+			(at 95.504 144.526 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8661,8 +8648,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
-			(at 97.79 142.24 0)
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+			(at 97.79 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8671,7 +8658,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 97.79 142.24 0)
+			(at 97.79 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8680,7 +8667,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 97.79 142.24 0)
+			(at 97.79 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9156,12 +9143,13 @@
 				)
 			)
 		)
-		(property "Footprint" "esp32_devkit_v1_doit:H_Bridge"
+		(property "Footprint" "esp32_devkit_v1_doit:H_Bridge_with_headers"
 			(at 116.6368 135.6868 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -9247,10 +9235,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "46c2335f-57d3-475e-9abd-1586708d3852")
 		(property "Reference" "R3"
-			(at 57.15 173.9899 0)
+			(at 50.038 173.482 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9258,8 +9245,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1K"
-			(at 57.15 176.5299 0)
+		(property "Value" "500R"
+			(at 48.006 176.276 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9337,7 +9324,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-AM_1x05_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 266.7 73.66 0)
 			(effects
 				(font
@@ -9399,15 +9386,15 @@
 		(dnp no)
 		(uuid "4c656cf5-0f08-4415-9351-c8fd743f7ce0")
 		(property "Reference" "D3"
-			(at 181.356 88.646 0)
+			(at 180.34 88.9 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "LED"
-			(at 180.34 91.7575 0)
+		(property "Value" "RED"
+			(at 180.34 91.44 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9667,10 +9654,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "62fdd9b7-e2ba-476e-9161-85840cbeac7e")
 		(property "Reference" "D1"
-			(at 58.42 184.4674 90)
+			(at 49.276 182.88 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9678,8 +9664,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 58.42 187.0074 90)
+		(property "Value" "BLUE"
+			(at 48.26 185.166 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9961,10 +9947,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "77cfcc7b-4e10-4e3f-8436-91c3f0682c82")
 		(property "Reference" "D5"
-			(at 119.38 183.1974 90)
+			(at 118.364 181.864 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9972,8 +9957,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "LED"
-			(at 119.38 185.7374 90)
+		(property "Value" "RED"
+			(at 118.364 184.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10118,7 +10103,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 97.79 137.16 0)
 			(effects
 				(font
@@ -11186,7 +11171,7 @@
 		(dnp no)
 		(uuid "c0b4ddd9-bb63-4ceb-bde9-4b3ce3fce8c7")
 		(property "Reference" "R8"
-			(at 179.07 82.804 90)
+			(at 180.594 80.264 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11195,7 +11180,7 @@
 			)
 		)
 		(property "Value" "330"
-			(at 169.672 84.328 90)
+			(at 181.864 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11594,7 +11579,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-AM_1x05_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 266.7 43.18 0)
 			(effects
 				(font
@@ -11673,7 +11658,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-AM_1x05_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 266.7 59.69 0)
 			(effects
 				(font
@@ -11958,7 +11943,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:Nidec_Copal_SH-7010C"
+		(property "Footprint" "esp32_devkit_v1_doit:Push_Button_6_pins"
 			(at 42.164 170.434 0)
 			(effects
 				(font
@@ -12102,7 +12087,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1K"
+		(property "Value" "130R"
 			(at 118.11 175.2599 0)
 			(effects
 				(font

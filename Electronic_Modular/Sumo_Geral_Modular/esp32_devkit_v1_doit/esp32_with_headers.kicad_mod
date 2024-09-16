@@ -1,4 +1,4 @@
-(footprint "esp32_devkit_v1_doit"
+(footprint "esp32_with_headers"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -807,9 +807,9 @@
 		(remove_unused_layers no)
 		(uuid "683c2e36-f9ff-40f3-81f1-f771023f77d3")
 	)
-	(model "C:/Users/Lucas Moreira/Documents/Fusion 360/arquivos-steps/ESP32-withou-headers.step"
+	(model "C:/Users/Lucas Moreira/Documents/Fusion 360/arquivos-steps/ESP32-with-headers.step"
 		(offset
-			(xyz 1.5 -34.82 5)
+			(xyz 1.6 -34.8 12)
 		)
 		(scale
 			(xyz 1 1 1)

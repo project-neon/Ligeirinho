@@ -1,4 +1,4 @@
-(footprint "H_Bridge"
+(footprint "H_Bridge_with_headers"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -15,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "H_Bridge"
+	(property "Value" "H_Bridge_with_headers"
 		(at 0 -14 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -530,13 +530,35 @@
 	)
 	(model "C:/Users/Lucas Moreira/Documents/Fusion 360/arquivos-steps/DRV6683-PONTE-H.stp"
 		(offset
-			(xyz 9.2 -10.4 2.5)
+			(xyz 9.2 -10.4 9.5)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
 			(xyz 90 180 0)
+		)
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x08_P2.54mm_Vertical.step"
+		(offset
+			(xyz 7.8 8.7 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x08_P2.54mm_Vertical.step"
+		(offset
+			(xyz -7.5 8.7 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
 		)
 	)
 )
