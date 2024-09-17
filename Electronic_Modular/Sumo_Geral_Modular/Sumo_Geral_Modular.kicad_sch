@@ -6275,7 +6275,7 @@
 	)
 	(text_box "SENSORS"
 		(exclude_from_sim no)
-		(at 236.22 20.32 0)
+		(at 235.966 25.4 0)
 		(size 11.43 2.54)
 		(stroke
 			(width 0)
