@@ -51,11 +51,11 @@ void preventFromFalling() {
 void simpleStrategy() {
   if (distC < distAtk and (distL < distAtk or distR < distAtk)) {
     Serial.print("ATACANDO \t\t");
-    preventFromFalling();
+    // preventFromFalling();
     velMotorL = velMotorR = speedStandard;
   } else if (distL < distAtk or distR < distAtk) {
     (distL < distAtk) ? Serial.print("ESQ \t\t") : Serial.print("DIR \t\t");
-    preventFromFalling();
+    // preventFromFalling();
     velMotorL = (distL < distAtk) ? speedStandard * 0.9 : speedStandard;
     velMotorR = (distL < distAtk) ? speedStandard : speedStandard * 0.9;
     enemyLastTimeSeenLeft = (distL < distAtk) ? true : false;
@@ -107,9 +107,9 @@ void loop() {
   
 
   if (isRobotAllowedToMove) {
-    // simpleStrategy();
+    simpleStrategy();
     // goBackAndForth();
-    checkIfBeingPushed();
+    // checkIfBeingPushed();
     // notMoveYAxis();
   } else {
     velMotorL = velMotorR = 0;
