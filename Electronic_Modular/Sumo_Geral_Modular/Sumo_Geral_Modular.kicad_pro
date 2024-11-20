@@ -216,9 +216,7 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [
-      "lib_symbol_issues|1168400|1384300|44f3d8b3-19c2-4f56-bc3f-dbd371af6732|00000000-0000-0000-0000-000000000000|||"
-    ],
+    "erc_exclusions": [],
     "meta": {
       "version": 0
     },
