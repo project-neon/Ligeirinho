@@ -1695,7 +1695,7 @@
 				)
 			)
 		)
-		(property "Footprint" "esp32_devkit_v1_doit:H_Bridge"
+		(property "Footprint" "esp32_devkit_v1_doit:H_Bridge_with_headers"
 			(at -0.2032 2.7432 0)
 			(effects
 				(font
