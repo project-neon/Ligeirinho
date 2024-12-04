@@ -3938,7 +3938,7 @@
 				)
 			)
 		)
-		(property "Value" "500R"
+		(property "Value" "300R/200mW"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "7dcfb9ba-bc93-425d-84f7-31945a3ef7a8")
@@ -4600,7 +4600,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "R10"
-			(at -0.015 1.45 360)
+			(at -0.015 1.45 0)
 			(layer "F.SilkS")
 			(uuid "40a18506-1618-48d7-9499-b16c016dd2ae")
 			(effects
@@ -4611,7 +4611,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 0 1.43 360)
+			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "59f9eabe-7883-4fe6-b733-9546dff601c2")
 			(effects
@@ -4766,7 +4766,7 @@
 			(uuid "d17d68ca-6649-4792-868b-58225fb6ca89")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "a184a7b1-acba-4942-843a-a1ab54f9e5d5")
 			(effects
@@ -7039,7 +7039,7 @@
 			(uuid "6d724a5e-c6f0-4bf5-9d94-8d8e86483848")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 2 360)
+			(at 0 2 0)
 			(layer "F.Fab")
 			(uuid "e1f8d7ca-8c5b-4a29-a31a-dad5bb5e2161")
 			(effects
@@ -8007,7 +8007,7 @@
 				)
 			)
 		)
-		(property "Value" "130R"
+		(property "Value" "75R/50mW"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "c39fe6b5-797a-418e-b333-f1b8218c48cd")
@@ -8426,7 +8426,7 @@
 			(uuid "136bc762-b846-470d-b478-81cb658720bb")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 2 360)
+			(at 0 2 0)
 			(layer "F.Fab")
 			(uuid "f4435395-50f8-4cef-9303-d860693729cb")
 			(effects
@@ -10232,7 +10232,7 @@
 			(uuid "83b4c2a0-f89b-45e5-87b3-a1717535a5d3")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 2 360)
+			(at 0 2 0)
 			(layer "F.Fab")
 			(uuid "f85caa3f-87a0-4b56-8767-656f7513835f")
 			(effects

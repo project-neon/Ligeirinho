@@ -9616,8 +9616,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "500R"
-			(at 48.006 176.276 0)
+		(property "Value" "300R/200mW"
+			(at 40.132 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12930,7 +12930,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "130R"
+		(property "Value" "75R/50mW"
 			(at 149.86 175.2599 0)
 			(effects
 				(font
