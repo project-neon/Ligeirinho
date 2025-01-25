@@ -53,3 +53,7 @@ void printMotorsSpeed() {
   Serial.print("VelL: " + (String)velMotorL + "   VelR: " + (String)velMotorR);
   Serial.print("\t");
 }
+
+String printInternetMotorsSpeed() {
+  return "  VelL: " + (String) velMotorL + "   VelR: " + (String) velMotorR;
+}

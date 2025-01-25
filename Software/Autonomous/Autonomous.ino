@@ -1,4 +1,5 @@
 #include "Pinout.h"  // Arquivo com os valores dos pinos
+#include "Internet.h"
 #include "Constants.h"
 #include "DistanceSensorVL53L0X.h"
 #include "GyroscopeMPU6050.h"
@@ -6,7 +7,6 @@
 #include "MouseSensorADNS9500.h"
 #include "PidController.h"
 #include "IRJudgeControllerVS1838B.h"
-
 
 int timer = millis();
 
@@ -20,9 +20,22 @@ void printDebugInfos() {
   Serial.println("");
 }
 
+void printInternetDebugInfos() {
+  // Mostra o valor de cada sensor na tela IP/webserial
+  String webSerialPrint = String("");
+  webSerialPrint += printInternetDistanceSensorsValues();
+  webSerialPrint += printInternetGyroscopeAngle();
+  webSerialPrint += printInternetMotorsSpeed();
+  webSerialPrint += printInternetMouseXYRelative();
+  WebSerial.println(webSerialPrint);
+}
+
 void setup() {
   // Inicia a comunicação serial UART
   Serial.begin(115200);
+
+  // Inicia a internet
+  InternetInit();
 
   // Iniciar o sensor de Infra Vermelho do Juiz
   IRJudgeControllerVS1838BInit();
@@ -117,4 +130,8 @@ void loop() {
 
   sendPWMToMotors();
   printDebugInfos();
+  if (millis() - timer >= 200) {
+    timer = millis();
+    printInternetDebugInfos();
+  }
 }

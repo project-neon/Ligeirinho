@@ -223,6 +223,10 @@ void printMouseXYRelative() {
   Serial.print("\t");
 }
 
+String printInternetMouseXYRelative() {
+ return "  X: " + (String) dx + "   Y: " + (String) dy;
+}
+
 void printMouseRadius() {
   Serial.print("Radius: ");
   Serial.print(radius);

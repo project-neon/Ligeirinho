@@ -56,3 +56,8 @@ void printDistanceSensorsValues() {
   Serial.print(distR);
   Serial.print("\t\t");
 }
+
+String printInternetDistanceSensorsValues() {
+  // Mostra o valor de cada sensor na tela
+  return "L: " + (String) distL + "  C: " + (String) distC + "  R: " + (String) distR;
+}

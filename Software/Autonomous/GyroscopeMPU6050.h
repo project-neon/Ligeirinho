@@ -16,6 +16,10 @@ void printGyroscopeAngle() {
   Serial.print("\t");
 }
 
+String printInternetGyroscopeAngle() {
+  return "  Angulo Z: " + (String) absoluteAngle;
+}
+
 
 void readGyroscopeAngles() {
   mpu6050.update(); // Atualiza os valores de X, Y, Z
