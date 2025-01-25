@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <ESPAsyncWebServer.h> //v3.1.0
 #include "SiteHtml.h"
+#include <WebSerial.h> //1.1.0 - Ayush Sharma
 
 AsyncWebServer server(80);
 WiFiClient client;
@@ -31,6 +32,9 @@ void setup() {
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
+  // WebSerial is accessible at "<IP Address>/webserial" in browser
+  WebSerial.begin(&server);
+
   // ENDPOINTS
   server.on("/", HTTP_GET, [](AsyncWebServerRequest* request) {
     Serial.println("GET /");
@@ -49,5 +53,6 @@ void setup() {
 }
 
 void loop() {
- 
+  WebSerial.println("Hello!");
+  delay(2000);
 }
