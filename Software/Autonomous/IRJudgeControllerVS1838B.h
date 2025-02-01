@@ -13,6 +13,11 @@ void checkSensorIR() {
     switch (IrReceiver.decodedIRData.command) {
       case 0:
         Serial.println("Apertou o botão 1");
+        if (!hasMpuAlreadyInitialize) {
+          hasMpuAlreadyInitialize = true;
+          // Inicia o Giroscópio
+          GyroscopeMPU6050Init();
+        }
         break;
       case 0x1:
       case 0x11:

@@ -17,9 +17,11 @@ void printDebugInfos() {
   printMouseXYRelative();
   printMouseRadius();
   printPidOutput();
+  Serial.print("Estratégia: " + (String) strategySelected);
   Serial.println("");
 }
 
+#if INTERNET_MODE == 1
 void printInternetDebugInfos() {
   // Mostra o valor de cada sensor na tela IP/webserial
   String webSerialPrint = String("");
@@ -27,27 +29,29 @@ void printInternetDebugInfos() {
   webSerialPrint += printInternetGyroscopeAngle();
   webSerialPrint += printInternetMotorsSpeed();
   webSerialPrint += printInternetMouseXYRelative();
+  webSerialPrint += " Estratégia: " + (String) strategySelected;
   WebSerial.println(webSerialPrint);
 }
+#endif
 
 void setup() {
   // Inicia a comunicação serial UART
   Serial.begin(115200);
+  pinMode(LED_BUILTIN, OUTPUT);
 
+  // Inicia os motores configurando os seus canais PWM
+  MotorsHBridgeDRV8833Init();
+
+  #if INTERNET_MODE > 0
   // Inicia a internet
   InternetInit();
+  #endif
 
   // Iniciar o sensor de Infra Vermelho do Juiz
   IRJudgeControllerVS1838BInit();
 
   // Inicia e endereça os 3 sensores de distância
   DistanceSensorVL53L0XInit();
-
-  // Inicia o Giroscópio
-  GyroscopeMPU6050Init();
-
-  // Inicia os motores configurando os seus canais PWM
-  MotorsHBridgeDRV8833Init();
 
   // Inicia o sensor de mouse
   MouseSensorADNS9500Init();
@@ -130,8 +134,11 @@ void loop() {
 
   sendPWMToMotors();
   printDebugInfos();
+
+  #if INTERNET_MODE == 1
   if (millis() - timer >= 200) {
     timer = millis();
     printInternetDebugInfos();
   }
+  #endif
 }
