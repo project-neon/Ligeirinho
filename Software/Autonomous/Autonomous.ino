@@ -31,6 +31,7 @@ void printInternetDebugInfos() {
   webSerialPrint += printInternetMouseXYRelative();
   webSerialPrint += " Estratégia: " + (String) strategySelected;
   WebSerial.println(webSerialPrint);
+  Serial.println(WiFi.localIP());
 }
 #endif
 

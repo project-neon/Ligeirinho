@@ -1,7 +1,7 @@
 //PS: A Internet e o USB costumam bater de frente quando usados juntos! Parece que pode ser tanto porque o WIFI consome muita energia do USB, como a falta de uso da flag phy_bbpll_en_usb(true);
 
 int strategySelected = 1;
-#define INTERNET_MODE 1 //0 -> Desliga a internet, > 0 -> Liga a internet, 1 -> Printa os valores em http://<192.168.15.24>/webserial
+#define INTERNET_MODE 0 //0 -> Desliga a internet, > 0 -> Liga a internet, 1 -> Printa os valores em http://<192.168.15.24>/webserial
 
 #if INTERNET_MODE > 0
 
@@ -31,7 +31,7 @@ const char* webpage = R"=====(
         <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
           <text y=%22.9em%22 font-size=%2290%22>  &#129302  </text>
         </svg>">
-      
+
       <h1> Controle do Robo &#129302 - NEON </h1>
     </head>
     <body>
@@ -75,14 +75,14 @@ const char* webpage = R"=====(
           display: inline-block;
         }
       </style>
-      
+
       <button id='ledID' onclick='turnLedOn()'> Ligar o LED </button> <br> <br>
       <span id='circle' class="dot"></span> <br> <br>
 
       <button id='ledID' onclick='setStrategy1()'> Setar Estrategia 1 </button> <br> <br>
       <button id='ledID' onclick='setStrategy2()'> Setar Estrategia 2  </button> <br> <br>
       <button id='ledID' onclick='setStrategy3()'> Setar Estrategia 3 </button> <br> <br>
-      
+
       <p id='strategyParagraph'></p> <br> <br>
 
       <a href=/webserial> <button> Ir para pagina /Webserial </button> </a> <br> <br>
@@ -100,16 +100,16 @@ void InternetInit() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
 
-  // Use o IP 192.168.15.24
-  IPAddress local_IP(192, 168, 15, 24);
-  IPAddress gateway(192, 168, 1, 1);
-  IPAddress subnet(255, 255, 0, 0);
-  IPAddress primaryDNS(8, 8, 8, 8);
-  IPAddress secondaryDNS(8, 8, 4, 4);
-  // Configures static IP address
-  if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
-    Serial.println("STA Failed to configure");
-  }
+  // // Use o IP 192.168.15.24
+  // IPAddress local_IP(192, 168, 15, 24);
+  // IPAddress gateway(192, 168, 1, 1);
+  // IPAddress subnet(255, 255, 0, 0);
+  // IPAddress primaryDNS(8, 8, 8, 8);
+  // IPAddress secondaryDNS(8, 8, 4, 4);
+  // // Configures static IP address
+  // if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
+  //   Serial.println("STA Failed to configure");
+  // }
 
   Serial.print("Tentando se conectar na internet, aguarde");
   int timer = millis();
