@@ -1,3 +1,8 @@
+//Board esp32 1.0.4
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
 // Motores da Esquerda e da direita
 #define MOTOR_RIGHT_IN1_PIN 14 // Também é o pino da ESC1
 #define MOTOR_RIGHT_IN2_PIN 27 // Também é o pino da ESC2
@@ -5,6 +10,8 @@
 #define MOTOR_LEFT_IN2_PIN 25
 
 // SCL, SDA para a comunicação I2C
+
+
 // Como usamos os pinos padrões da I2C, a biblioteca Wire.h cuida
 // disso automaticamente para nós. Então essas variáveis não seriam necessárias.
 #define SCL_PIN 22

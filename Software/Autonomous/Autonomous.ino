@@ -38,10 +38,10 @@ void printInternetDebugInfos() {
 void setup() {
   // Inicia a comunicação serial UART
   Serial.begin(115200);
-  pinMode(LED_BUILTIN, OUTPUT);
 
   // Inicia os motores configurando os seus canais PWM
   MotorsHBridgeDRV8833Init();
+  Serial.println("Motores ON");
 
   #if INTERNET_MODE > 0
   // Inicia a internet
@@ -50,12 +50,16 @@ void setup() {
 
   // Iniciar o sensor de Infra Vermelho do Juiz
   IRJudgeControllerVS1838BInit();
+  Serial.println("Controle Juiz ON");
 
   // Inicia e endereça os 3 sensores de distância
   DistanceSensorVL53L0XInit();
+  Serial.println("VL53L0X ON");
 
   // Inicia o sensor de mouse
-  MouseSensorADNS9500Init();
+  //MouseSensorADNS9500Init();
+  Serial.println("Sensor Mouse ON");
+
 }
 
 void preventFromFalling() {

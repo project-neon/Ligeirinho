@@ -63,5 +63,5 @@ void printMotorsSpeed() {
 }
 
 String printInternetMotorsSpeed() {
-  return "  VelL: " + (String) velMotorL + "   VelR: " + (String) velMotorR;
+  return "  VelL: " + (String)velMotorL + "   VelR: " + (String)velMotorR;
 }

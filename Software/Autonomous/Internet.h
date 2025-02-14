@@ -1,7 +1,7 @@
 //PS: A Internet e o USB costumam bater de frente quando usados juntos! Parece que pode ser tanto porque o WIFI consome muita energia do USB, como a falta de uso da flag phy_bbpll_en_usb(true);
 
 int strategySelected = 1;
-#define INTERNET_MODE 0 //0 -> Desliga a internet, > 0 -> Liga a internet, 1 -> Printa os valores em http://<192.168.15.24>/webserial
+#define INTERNET_MODE 0  //0 -> Desliga a internet, > 0 -> Liga a internet, 1 -> Printa os valores em http://<192.168.15.24>/webserial
 
 #if INTERNET_MODE > 0
 
@@ -9,14 +9,14 @@ int strategySelected = 1;
 
 // Referência: https://esp32io.com/tutorials/esp32-web-server#content_reading_the_sensor_value_from_esp32_via_web
 #include <WiFi.h>
-#include <ESPAsyncWebServer.h> //v3.1.0
-#include <WebSerial.h> //1.1.0 - Ayush Sharma
+#include <ESPAsyncWebServer.h>  //v3.1.0
+#include <WebSerial.h>          //1.1.0 - Ayush Sharma
 
 AsyncWebServer server(80);
 WiFiClient client;
 
-const char *ssid = "----";
-const char *password = "----";
+const char* ssid = "----";
+const char* password = "----";
 bool isLedOn = false;
 
 const char* webpage = R"=====(
