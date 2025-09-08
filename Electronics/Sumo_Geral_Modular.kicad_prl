@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 31,
+    "active_layer": 37,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -19,7 +19,7 @@
       "footprints": true,
       "graphics": true,
       "keepouts": true,
-      "lockedItems": false,
+      "lockedItems": true,
       "otherItems": true,
       "pads": true,
       "text": true,
@@ -64,11 +64,17 @@
       39,
       40
     ],
-    "visible_layers": "ffdffcf_ffffffff",
+    "visible_layers": "8005140_fffffffe",
     "zone_display_mode": 0
   },
+  "git": {
+    "repo_password": "",
+    "repo_type": "",
+    "repo_username": "",
+    "ssh_key": ""
+  },
   "meta": {
-    "filename": "ligeirinho.kicad_prl",
+    "filename": "Sumo_Geral_Modular.kicad_prl",
     "version": 3
   },
   "project": {
