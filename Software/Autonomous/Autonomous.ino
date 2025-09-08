@@ -1,4 +1,5 @@
 #include "Pinout.h"  // Arquivo com os valores dos pinos
+#include "Internet.h"
 #include "Constants.h"
 #include "DistanceSensorVL53L0X.h"
 #include "GyroscopeMPU6050.h"
@@ -6,7 +7,6 @@
 #include "MouseSensorADNS9500.h"
 #include "PidController.h"
 #include "IRJudgeControllerVS1838B.h"
-
 
 int timer = millis();
 
@@ -17,27 +17,49 @@ void printDebugInfos() {
   printMouseXYRelative();
   printMouseRadius();
   printPidOutput();
+  Serial.print("Estratégia: " + (String) strategySelected);
   Serial.println("");
 }
+
+#if INTERNET_MODE == 1
+void printInternetDebugInfos() {
+  // Mostra o valor de cada sensor na tela IP/webserial
+  String webSerialPrint = String("");
+  webSerialPrint += printInternetDistanceSensorsValues();
+  webSerialPrint += printInternetGyroscopeAngle();
+  webSerialPrint += printInternetMotorsSpeed();
+  webSerialPrint += printInternetMouseXYRelative();
+  webSerialPrint += " Estratégia: " + (String) strategySelected;
+  WebSerial.println(webSerialPrint);
+  Serial.println(WiFi.localIP());
+}
+#endif
 
 void setup() {
   // Inicia a comunicação serial UART
   Serial.begin(115200);
 
+  // Inicia os motores configurando os seus canais PWM
+  MotorsHBridgeDRV8833Init();
+  Serial.println("Motores ON");
+
+  #if INTERNET_MODE > 0
+  // Inicia a internet
+  InternetInit();
+  #endif
+
   // Iniciar o sensor de Infra Vermelho do Juiz
   IRJudgeControllerVS1838BInit();
+  Serial.println("Controle Juiz ON");
 
   // Inicia e endereça os 3 sensores de distância
   DistanceSensorVL53L0XInit();
-
-  // Inicia o Giroscópio
-  GyroscopeMPU6050Init();
-
-  // Inicia os motores configurando os seus canais PWM
-  MotorsHBridgeDRV8833Init();
+  Serial.println("VL53L0X ON");
 
   // Inicia o sensor de mouse
-  MouseSensorADNS9500Init();
+  //MouseSensorADNS9500Init();
+  Serial.println("Sensor Mouse ON");
+
 }
 
 void preventFromFalling() {
@@ -51,11 +73,11 @@ void preventFromFalling() {
 void simpleStrategy() {
   if (distC < distAtk and (distL < distAtk or distR < distAtk)) {
     Serial.print("ATACANDO \t\t");
-    preventFromFalling();
+    // preventFromFalling();
     velMotorL = velMotorR = speedStandard;
   } else if (distL < distAtk or distR < distAtk) {
     (distL < distAtk) ? Serial.print("ESQ \t\t") : Serial.print("DIR \t\t");
-    preventFromFalling();
+    // preventFromFalling();
     velMotorL = (distL < distAtk) ? speedStandard * 0.9 : speedStandard;
     velMotorR = (distL < distAtk) ? speedStandard : speedStandard * 0.9;
     enemyLastTimeSeenLeft = (distL < distAtk) ? true : false;
@@ -107,9 +129,9 @@ void loop() {
   
 
   if (isRobotAllowedToMove) {
-    // simpleStrategy();
+    simpleStrategy();
     // goBackAndForth();
-    checkIfBeingPushed();
+    // checkIfBeingPushed();
     // notMoveYAxis();
   } else {
     velMotorL = velMotorR = 0;
@@ -117,4 +139,11 @@ void loop() {
 
   sendPWMToMotors();
   printDebugInfos();
+
+  #if INTERNET_MODE == 1
+  if (millis() - timer >= 200) {
+    timer = millis();
+    printInternetDebugInfos();
+  }
+  #endif
 }

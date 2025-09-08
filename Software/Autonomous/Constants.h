@@ -1,5 +1,5 @@
 const int distAtk = 600;
-int speedStandard = 85;
+int speedStandard = 100;
 const int maxSpeed = 100;
 const int searchSpeed = 50;
 const int maxRadius = 1500;

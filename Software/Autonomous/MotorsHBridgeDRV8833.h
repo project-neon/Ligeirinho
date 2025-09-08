@@ -2,10 +2,13 @@
 const int motorsInputPins[4] = { MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN, MOTOR_LEFT_IN2_PIN };
 
 // Estabelecendo os canais PWM que serão utilizados
-const int chRightIN1 = 0;  // Canal PWM 0 que irá ser vinculado ao pino 21 da ponte H
-const int chRightIN2 = 1;  // Canal PWM 1 que irá ser vinculado ao pino 19 da ponte H
-const int chLeftIN1 = 2;   // Canal PWM 2 que irá ser vinculado ao pino 23 da ponte H
-const int chLeftIN2 = 3;   // Canal PWM 3 que irá ser vinculado ao pino 22 da ponte H
+// Como os motores estão espelhados, para girar na mesma direção,
+// precisamos fazer a ordem 1 0 2 3, ao invés de 0 1 2 3
+// vinculando assim o IN1 com o canal IN2 e o IN2 com o canal IN1
+const int chRightIN1 = 1;  // Canal PWM 1 que irá ser vinculado ao pino MOTOR_RIGHT_IN2_PIN da ponte H
+const int chRightIN2 = 0;  // Canal PWM 0 que irá ser vinculado ao pino MOTOR_RIGHT_IN1_PIN da ponte H
+const int chLeftIN1 = 2;   // Canal PWM 2 que irá ser vinculado ao pino MOTOR_LEFT_IN1_PIN da ponte H
+const int chLeftIN2 = 3;   // Canal PWM 3 que irá ser vinculado ao pino MOTOR_LEFT_IN2_PIN da ponte H
 
 // Configurando o PWM
 const int freq = 50;                           // Frequência do PWM, definida em 50Hz
@@ -23,6 +26,11 @@ void MotorsHBridgeDRV8833Init() {
     pinMode(motorsInputPins[i], OUTPUT);   // Fazemos os pinos MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN e MOTOR_LEFT_IN2_PIN serem OUTPUTs
     ledcSetup(i, freq, resolution);        // Atribui a todos os canais i (= 0, 1, 2, 3) a frequencia de 50Hz com resolucao de 12bits.
     ledcAttachPin(motorsInputPins[i], i);  // Associamos os pinos MOTOR_RIGHT_IN1_PIN, MOTOR_RIGHT_IN2_PIN, MOTOR_LEFT_IN1_PIN e MOTOR_LEFT_IN2_PIN aos canais i (= 0, 1, 2, 3) respectivamente.
+
+    // Na placa modular usamos o pino 14, que inicia como HIGH,
+    // A roda então ficaria rodando durante o setup()
+    // Essa linha garante que a roda pare assim que possível
+    ledcWrite(i, 0);
   }
 }
 
@@ -52,4 +60,8 @@ void motorsPrintVel() {
 void printMotorsSpeed() {
   Serial.print("VelL: " + (String)velMotorL + "   VelR: " + (String)velMotorR);
   Serial.print("\t");
+}
+
+String printInternetMotorsSpeed() {
+  return "  VelL: " + (String)velMotorL + "   VelR: " + (String)velMotorR;
 }
